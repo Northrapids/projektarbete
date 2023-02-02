@@ -8,29 +8,32 @@
 // const userlevelEl = document.getElementById("userlevel");
 // const submitButtonEl = document.getElementById("submitButton")
 // const deleteButtonEl = document.getElementById("deleteButton")
-// const listEl = document.getElementById("list");
+const listEl = document.getElementById("list");
 
 const sectionEl = document.getElementById("section");
 const categoryEl = document.getElementById("category");
+const cartEl = document.getElementById("cart")
 
-let cartArray = [];
+// let cartArray = [];
 
 
 // --- GET ---
-// hämta alla användare och skriv ut till konsolen
+// hämtar alla produkter och skriv ut till konsolen
 fetch("https://fakestoreapi.com/products")
     .then(res => res.json())
-    .then(data => renderApp(data, categoryEl.value))
+    // .then(data => console.log(data))
+    .then(data => renderProducts(data, categoryEl.value, console.log(data)))
+    
 
-
-function renderApp(product,category) {
-    console.log("renderApp function working")
-    let section = "";
+// funktion som skriver ut alla produkter med kategori alternativ
+function renderProducts(product,category) {
+    console.log("renderProducts function working")
+    let section = ``;
     sectionEl.innerHTML += section;
 
     for(let i = 0; i < product.length; i++) {
         if (category === product[i].category || category === "all") {
-            // sectionEl.innerHTML
+            // sectionEl.innerHTML += `
             section += `
             <br><br><br>
             <div id="img">
@@ -43,30 +46,188 @@ function renderApp(product,category) {
                 <h4 id="price">$ ${product[i].price} </h4>
             </div>
             <p> id #${product[i].id} </p>
-            <button onclick="addToCart('${product[i].image}' ,'(${product[i].title})', '${product[i].price}')" id="adToCartBtn">Add to cart</button>
+            <button onclick="addToCart('${product[i].image}' ,'(${product[i].title.replace("'","")})', '${product[i].price}', '${product[i].id}')">Add to cart</button>
             <br><br><br>
             `          
         }
         sectionEl.innerHTML = section;
+        // console.log(section)
     }
 }
+
+
 
 // console.log(cartArray);
 
 categoryEl.addEventListener('change', (e) => {
-    console.log("category select working");
+    console.log("category options working");
     fetch("https://fakestoreapi.com/products")
     .then(res => res.json())    
-    .then(data => renderApp(data, categoryEl.value));
+    .then(data => renderProducts(data, categoryEl.value));
 });
 
-function addToCart(image, title, price) {
-    // let cartArray = [];
+// let cartArray = JSON.parse(localStorage.getItem("items")) || '[]';
+let cartArray = [];
 
-    cartArray.push({image: image, title: title, price: price});
-    sessionStorage.setItem("cartArray", JSON.stringify(cartArray));
+// if(localStorage.getItem("items") == null) {
+//     let cartArray = [];
+// } else {
+//     let cartArray = JSON.parse(localStorage.getItem("items"));
+// }
+
+// function addToCart(image, title, price) {   
+// function addToCart(image, title, price, id) {   
+
+//     cartArray.push({image, title, price, id});
+function addToCart(image, title, price, id) {   
+
+    cartArray.push({image, title, price, id});
+    
+    // cartArray.push('${product[i].image}' ,'(${product[i].title})', '${product[i].price}');
+    // localStorage.setItem("cartArray", JSON.stringify(cartArray));
+    localStorage.setItem("items", JSON.stringify(cartArray));
+    // sessionStorage.setItem("products", JSON.stringify(cartArray));
+    // localStorage.object.key("cartArray", JSON.stringify(cartArray));
+    // sessionStorage.setItem("cartArray", JSON.stringify(cartArray));
+
+    // for(let i = 0; i < cartArray.length; i++) {
+    //     listEl.innerHTML += `
+    //     <li>${cartArray[i].title}</li>
+    //     `
+    //     // let li = document.createElement("li")
+    //     // li.textContent = cartArray[i]
+    //     // list.appenChild(li)
+    // }
     console.log(cartArray);
+    console.log("addToCart function working");
+    renderCart(cartArray);
 }
+
+// console.log(Object.keys(localStorage));
+function removeFromCart(i) {
+    cartArray.splice(i, 1);
+    localStorage.setItem("items", JSON.stringify(cartArray));
+    renderCart(cartArray);
+}
+
+// function removeFromCart(product) {
+//     for(let i = 0; i < product.length; i++){
+//         cartArray.splice(i,1);
+//     }
+//     localStorage.setItem("items", JSON.stringify(cartArray));
+
+//     console.log(cartArray);
+//     console.log("removeFromCart function working");
+    
+//     renderCart(cartArray);
+
+// }
+// function removeFromCart(cartArray) {
+   
+//     for(let i = 0; i < cartArray.length; i++){
+//         if(cartArray.length === cartArray[i].id) {
+//             cartArray.splice(i,1);
+//         }
+//         // cartArray.splice(i,1);
+//     }
+//     localStorage.setItem("items", JSON.stringify(cartArray));
+
+//     console.log(cartArray);
+//     console.log("removeFromCart function working");
+    
+//     renderCart(cartArray);
+
+// }
+// function removeFromCart(product) {
+//     console.log(product, "remove function");
+
+//     const filter = cartArray.filter((a,i) => {
+//         if(product == a.id){
+//             product.splice(i,1);
+//         }
+//     })
+//     // for(let i = 0; i < product.length; i++){
+//     //     cartArray.splice(i,1);
+//     // }
+//     // localStorage.setItem("items", JSON.stringify(cartArray));
+
+//     // console.log(cartArray);
+//     // console.log("removeFromCart function working");
+    
+//     // renderCart(cartArray);
+
+// }
+
+// function renderCart(products) {
+//     listEl.innerHTML = "";
+//     listEl.innerHTML = `
+//     <ul></ul>
+//     `;
+//     for(let i = 0; i < products.length; i++) {
+//         listEl.innerHTML += `
+//         <li>            
+//         <img src="${products[i].image}" width=50px>
+//         <p>${products[i].title}</p>
+//         <p>product id#${products[i].id}</p>
+//         <p>${products[i].price}</p>
+//         </li>
+//         `
+//     }
+    
+
+// }
+
+
+function renderCart(product) {
+    
+    cartEl.innerHTML = "";
+    cartEl.innerHTML = `
+    <tr>
+    
+    <th>Product</th>
+    <th>id</th>
+    <th>Price</th>
+    </tr>
+    `;
+
+    
+    for(let i = 0; i < product.length; i++) {
+        cartEl.innerHTML += `
+        <tr>        
+            <td>            
+                <img src="${product[i].image}" width=50px>
+            </td>
+                
+            <td>
+                ${product[i].id}
+            </td>
+            <td>
+                ${product[i].price}
+            </td>
+            <td>
+            <button onclick="removeFromCart('${i}')">Remove</button>
+
+            </td>
+        </tr>            
+        `
+    }
+    // cartEl.innerHTML + "<tr><td>total price</td></tr>"
+    console.log("renderCart function working")
+    
+
+}
+
+{/* <button onclick="removeFromCart('${product[i].image}', '${product[i].id}', '${product[i].price}')">Remove</button> */}
+
+{/* <td>
+                ${products[i].title}
+                </td> */}
+
+// {/* <div>
+//             <img src="${products[i].image}" width=100px>
+//             </div> */}
+
+// function renderCart {}
 
 
 // // --- swtich for categorys----
@@ -75,6 +236,8 @@ function addToCart(image, title, price) {
 
     
 // }
+
+
 
 
 // function filterSelection(value) {
