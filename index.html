@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a51a2dca4e.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
-    <title>project js</title>
+    <title>Fakestore Project</title>
 </head>
 <body>
 
@@ -20,15 +20,17 @@
                     <nav class="bar"></nav>
                     <nav class="bar"></nav>
                     <nav class="bar"></nav>
-                </nav>
+                </nav> -->
                 <ul class="navbar_menu">               
                     <li class="navbar_item">
                         <a href="index.html" class="navbar_links">Home</a>
                     </li>
                     <li class="navbar_item">
-                        <a href="rooms.html" class="navbar_links">Rooms</a>
+                        <a href="checkout.html" class="navbar_links">
+                            <i id="cartIcon" class="fa-solid fa-cart-shopping"></i>
+                        </a>
                     </li>
-                    <li class="navbar_item">
+                    <!-- <li class="navbar_item">
                         <a href="contact.html" class="navbar_links">Contact</a>
                     </li> -->
                     <li class="navbar_button">
@@ -89,14 +91,22 @@
     <!-- <section id="cart"></section> -->
     <br><br><br>
 
-    <table id="cart">
-        <tr>
+
+    <label for="cart">Shopping cart</label>
+    <table name= "cart" id="cart">
+        <!-- <tr>
             <th></th>
             <th>Product</th>
             <th>id</th>
             <th>Price</th>
-        </tr>
+        </tr> -->
     </table>
+    <p id="quantity">Quantity:</p>
+    <p id="total">Cart total:</p>
+    <button id= "checkoutButton" onclick="checkout()">checkout</button>
+    <!-- <button id= "checkoutButton" onclick="herf='checkout.html'">checkout</button> -->
+    <!-- <a href="ceckout.html"></a> -->
+
 
     <!-- <table id="cart">
         <th></th>
@@ -105,6 +115,9 @@
         <th>price</th>
     </table> -->
 
+
+
+    
 
 
 

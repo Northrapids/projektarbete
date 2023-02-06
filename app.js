@@ -1,38 +1,35 @@
 "use strict";
 
 // --- HTML - ELEMENT ---
-// const tableEl = document.getElementById("table");
-// const sectionEl = document.getElementById("section");
-// const usernameEl = document.getElementById("username");
-// const userageEl = document.getElementById("userage");
-// const userlevelEl = document.getElementById("userlevel");
-// const submitButtonEl = document.getElementById("submitButton")
-// const deleteButtonEl = document.getElementById("deleteButton")
+
 const listEl = document.getElementById("list");
 
 const sectionEl = document.getElementById("section");
 const categoryEl = document.getElementById("category");
-const cartEl = document.getElementById("cart")
+const cartEl = document.getElementById("cart");
+const totalEl = document.getElementById("total");
+const quantityEl = document.getElementById("quantity");
 
-// let cartArray = [];
+
+
 
 
 // --- GET ---
-// hämtar alla produkter och skriv ut till konsolen
+// fetching api and display all products in console
 fetch("https://fakestoreapi.com/products")
     .then(res => res.json())
-    // .then(data => console.log(data))
-    .then(data => renderProducts(data, categoryEl.value, console.log(data)))
+    .then(data => displayProducts(data, categoryEl.value, console.log(data)))
     
 
-// funktion som skriver ut alla produkter med kategori alternativ
-function renderProducts(product,category) {
-    console.log("renderProducts function working")
+// function that displays all products and option to display by category
+//.replace(" ' ", "") removes the apostrophe/ single-quote from title, which gave syntax error when adding to cartArray
+function displayProducts(product,category) {
+    console.log("displayProducts function working"); // checks in console if function is working
     let section = ``;
     sectionEl.innerHTML += section;
 
     for(let i = 0; i < product.length; i++) {
-        if (category === product[i].category || category === "all") {
+        if (category === product[i].category || category === "all") { // makes it possible to switch between categories
             // sectionEl.innerHTML += `
             section += `
             <br><br><br>
@@ -59,15 +56,17 @@ function renderProducts(product,category) {
 
 // console.log(cartArray);
 
+
+// addEventListener that change category and fetches product based on category
 categoryEl.addEventListener('change', (e) => {
     console.log("category options working");
     fetch("https://fakestoreapi.com/products")
     .then(res => res.json())    
-    .then(data => renderProducts(data, categoryEl.value));
+    .then(data => displayProducts(data, categoryEl.value));
 });
 
 // let cartArray = JSON.parse(localStorage.getItem("items")) || '[]';
-let cartArray = [];
+// let cartArray = [];
 
 // if(localStorage.getItem("items") == null) {
 //     let cartArray = [];
@@ -79,13 +78,29 @@ let cartArray = [];
 // function addToCart(image, title, price, id) {   
 
 //     cartArray.push({image, title, price, id});
-function addToCart(image, title, price, id) {   
 
-    cartArray.push({image, title, price, id});
+
+let cartArray = JSON.parse(localStorage.getItem("product")) || [];
+// let cartArray = [];
+
+
+
+// function that adds products to cart
+function addToCart(image, title, price, id) {  
+    console.log("addToCart function working");// checks in console if function is working
+
+
+    cartArray.push({
+        image,
+        title,
+        price,
+        id
+    }); // adds product by image, title, prica, and id to cartArray
     
     // cartArray.push('${product[i].image}' ,'(${product[i].title})', '${product[i].price}');
     // localStorage.setItem("cartArray", JSON.stringify(cartArray));
-    localStorage.setItem("items", JSON.stringify(cartArray));
+    localStorage.setItem("product", JSON.stringify(cartArray)); // stores product in localStorage
+
     // sessionStorage.setItem("products", JSON.stringify(cartArray));
     // localStorage.object.key("cartArray", JSON.stringify(cartArray));
     // sessionStorage.setItem("cartArray", JSON.stringify(cartArray));
@@ -98,28 +113,27 @@ function addToCart(image, title, price, id) {
     //     // li.textContent = cartArray[i]
     //     // list.appenChild(li)
     // }
-    console.log(cartArray);
-    console.log("addToCart function working");
-    renderCart(cartArray);
+    displayCart(cartArray); // displays updated cart
+    console.log(cartArray); // display updated cart in console
+
 }
 
 // console.log(Object.keys(localStorage));
+
+
+// function that removes products from cart
 function removeFromCart(i) {
-    cartArray.splice(i, 1);
-    localStorage.setItem("items", JSON.stringify(cartArray));
-    renderCart(cartArray);
+    console.log("removeFromCart function working") // checks in console if function is working
+
+    cartArray.splice(i, 1); // splice method removes specific product from cart
+    localStorage.setItem("product", JSON.stringify(cartArray)); // stores product in localStorage
+    displayCart(cartArray); // displays updated cart
+    console.log(cartArray); // display updated cart in console
 }
 
-// function removeFromCart(product) {
-//     for(let i = 0; i < product.length; i++){
-//         cartArray.splice(i,1);
-//     }
-//     localStorage.setItem("items", JSON.stringify(cartArray));
 
-//     console.log(cartArray);
-//     console.log("removeFromCart function working");
     
-//     renderCart(cartArray);
+//     displayCart(cartArray);
 
 // }
 // function removeFromCart(cartArray) {
@@ -158,18 +172,18 @@ function removeFromCart(i) {
 
 // }
 
-// function renderCart(products) {
+// function displayCart(product) {
 //     listEl.innerHTML = "";
 //     listEl.innerHTML = `
 //     <ul></ul>
 //     `;
-//     for(let i = 0; i < products.length; i++) {
+//     for(let i = 0; i < product.length; i++) {
 //         listEl.innerHTML += `
 //         <li>            
-//         <img src="${products[i].image}" width=50px>
-//         <p>${products[i].title}</p>
-//         <p>product id#${products[i].id}</p>
-//         <p>${products[i].price}</p>
+//         <img src="${product[i].image}" width=50px>
+//         <p>${product[i].title}</p>
+//         <p>product id#${product[i].id}</p>
+//         <p>${product[i].price}</p>
 //         </li>
 //         `
 //     }
@@ -177,27 +191,27 @@ function removeFromCart(i) {
 
 // }
 
-
-function renderCart(product) {
+// function that displays product inside cart
+function displayCart(product) {
+    console.log("displayCart function working"); // checks in console if function is working
     
     cartEl.innerHTML = "";
-    cartEl.innerHTML = `
-    <tr>
-    
-    <th>Product</th>
-    <th>id</th>
-    <th>Price</th>
+    cartEl.innerHTML = 
+    `
+    <tr>    
+        <th>Product</th>
+        <th>id</th>
+        <th>Price</th>
     </tr>
     `;
-
     
     for(let i = 0; i < product.length; i++) {
-        cartEl.innerHTML += `
-        <tr>        
+        cartEl.innerHTML += 
+        `
+        <tr>      
             <td>            
                 <img src="${product[i].image}" width=50px>
-            </td>
-                
+            </td>                   
             <td>
                 ${product[i].id}
             </td>
@@ -205,29 +219,108 @@ function renderCart(product) {
                 ${product[i].price}
             </td>
             <td>
-            <button onclick="removeFromCart('${i}')">Remove</button>
-
+                <button onclick="removeFromCart('${i}')">Remove</button>
             </td>
         </tr>            
         `
     }
-    // cartEl.innerHTML + "<tr><td>total price</td></tr>"
-    console.log("renderCart function working")
-    
 
+    quantityEl.innerHTML = "Quantity: " + product.length; // summarize products in cart
+
+    const sumPrice = product.reduce((acc, product) => { // summarize prices
+        return acc + parseFloat(product.price);        
+    }, 0);
+    totalEl.innerHTML = "Cart Total: $ " + sumPrice.toFixed(2); // toFixed(2) round didgit to two decimals
+}
+// const savedProducts = JSON.parse(localStorage.getItem("product"));
+// if (savedProducts) {
+//     cartArray = savedProducts;
+// }
+// displayCart(cartArray);
+
+// const savedProducts = JSON.parse(localStorage.getItem("product"));
+// if (savedProducts) {
+//     cartArray = savedProducts;
+// }
+// displayCart(cartArray);
+const savedProducts = JSON.parse(localStorage.getItem("product"));
+
+cartArray = savedProducts;
+
+displayCart(cartArray);
+
+
+
+
+
+
+
+
+function checkout() {
+    window.location = "checkout.html";
 }
 
-{/* <button onclick="removeFromCart('${product[i].image}', '${product[i].id}', '${product[i].price}')">Remove</button> */}
 
-{/* <td>
-                ${products[i].title}
-                </td> */}
 
-// {/* <div>
-//             <img src="${products[i].image}" width=100px>
-//             </div> */}
+// // function that displays product inside cart
+// function displayCart(product) {
+//     console.log("displayCart function working"); // checks in console if function is working
 
-// function renderCart {}
+//     // console.log(Object.keys(localStortage));
+
+   
+    
+//         cartEl.innerHTML = "";
+//         cartEl.innerHTML = 
+//         `
+//         <tr>    
+//             <th>Product</th>
+//             <th>id</th>
+//             <th>Price</th>
+//         </tr>
+//         `;
+        
+//         for(let i = 0; i < product.length; i++) {
+//             cartEl.innerHTML += 
+//             `
+//             <tr>      
+//                 <td>            
+//                     <img src="${product[i].image}" width=50px>
+//                 </td>                   
+//                 <td>
+//                     ${product[i].id}
+//                 </td>
+//                 <td>
+//                     ${product[i].price}
+//                 </td>
+//                 <td>
+//                     <button onclick="removeFromCart('${i}')">Remove</button>
+//                 </td>
+//             </tr>            
+//             `
+//         }
+
+//         quantityEl.innerHTML = "Quantity: " + product.length; // summarize products in cart
+
+//         const sumPrice = product.reduce((acc, product) => { // summarize prices
+//             return acc + parseFloat(product.price);        
+//         }, 0);
+//         totalEl.innerHTML = "Cart Total: $ " + sumPrice.toFixed(2); // toFixed(2) round didgit to two decimals
+//     }
+
+//     if (cartArray.lenght === 0) {
+//         console.log("empty");
+        
+//     }
+
+
+{/*         <td>            
+                ${i+1}
+            </td> */}
+
+
+
+
 
 
 // // --- swtich for categorys----
