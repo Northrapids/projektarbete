@@ -9,6 +9,8 @@ const categoryEl = document.getElementById("category");
 const cartEl = document.getElementById("cart");
 const totalEl = document.getElementById("total");
 const quantityEl = document.getElementById("quantity");
+// const quantityIconEl = document.getElementById("quantityIcon");
+
 
 
 
@@ -32,19 +34,23 @@ function displayProducts(product,category) {
         if (category === product[i].category || category === "all") { // makes it possible to switch between categories
             // sectionEl.innerHTML += `
             section += `
-            <br><br><br>
-            <div id="img">
-                <img src='${product[i].image}'alt='' id="poster" width=100px>
+            
+            <article id="card">
+            <div id="img_container">
+                <img src='${product[i].image}'alt='' id="img" >
             </div>
-            <h2>${product[i].title}</h2>
-            <p>${product[i].description}</p>
-            <h3>${product[i].category}</h3>
-            <div id="price_container">        
-                <h4 id="price">$ ${product[i].price} </h4>
+            <div id="title_container">
+            <h2 id="title">${product[i].title}</h2>
             </div>
-            <p> id #${product[i].id} </p>
-            <button onclick="addToCart('${product[i].image}' ,'(${product[i].title.replace("'","")})', '${product[i].price}', '${product[i].id}')">Add to cart</button>
-            <br><br><br>
+            <h3 id="categories">Category: ${product[i].category}</h3>
+            <p id="description">${product[i].description}</p>
+            <p id="id"> id #${product[i].id} </p>
+            <div id="price_container">                    
+                <p id="price">$ ${product[i].price} </p>
+                <button id="addToCartBtn" onclick="addToCart('${product[i].image}' ,'(${product[i].title.replace("'","")})', '${product[i].price}', '${product[i].id}')">Add to cart</button>
+            </div>
+            </article>
+            
             `          
         }
         sectionEl.innerHTML = section;
@@ -173,27 +179,59 @@ function removeFromCart(i) {
 // }
 
 // function displayCart(product) {
-//     listEl.innerHTML = "";
-//     listEl.innerHTML = `
+
+//     document.getElementById("quantityIcon").innerHTML = cartArray.length;
+
+//     if (cartArray.length >= 1) {    
+//     document.getElementById("quantityIcon").style.display = "flex"
+//     } else {
+//         document.getElementById("quantityIcon").style.display = "none";
+//     }
+//     cartEl.innerHTML = ``;
+//     cartEl.innerHTML = `
 //     <ul></ul>
 //     `;
 //     for(let i = 0; i < product.length; i++) {
-//         listEl.innerHTML += `
+//         cartEl.innerHTML += `
+//         <section>
 //         <li>            
 //         <img src="${product[i].image}" width=50px>
 //         <p>${product[i].title}</p>
 //         <p>product id#${product[i].id}</p>
 //         <p>${product[i].price}</p>
+//         <button onclick="removeFromCart('${i}')">Remove</button>
 //         </li>
+//         </section>
+//         <br>
 //         `
 //     }
+//     quantityEl.innerHTML = "Quantity: " + product.length; // summarize products in cart
+
+//     const sumPrice = product.reduce((acc, product) => { // summarize prices
+//         return acc + parseFloat(product.price);        
+//     }, 0);
+//     totalEl.innerHTML = "Cart Total: $ " + sumPrice.toFixed(2); // toFixed(2) round didgit to two decimals
+// }
+// const savedProducts = JSON.parse(localStorage.getItem("product"));
+// if (savedProducts) {
+//     cartArray = savedProducts;
+// }
+// displayCart(cartArray);
     
 
-// }
+
 
 // function that displays product inside cart
 function displayCart(product) {
     console.log("displayCart function working"); // checks in console if function is working
+
+    document.getElementById("quantityIcon").innerHTML = cartArray.length;
+
+    if (cartArray.length >= 1) {    
+    document.getElementById("quantityIcon").style.display = "flex"
+    } else {
+        document.getElementById("quantityIcon").style.display = "none";
+    }
     
     cartEl.innerHTML = "";
     cartEl.innerHTML = 
@@ -202,6 +240,7 @@ function displayCart(product) {
         <th>Product</th>
         <th>id</th>
         <th>Price</th>
+        <th>Remove</th>
     </tr>
     `;
     
@@ -209,17 +248,19 @@ function displayCart(product) {
         cartEl.innerHTML += 
         `
         <tr>      
-            <td>            
-                <img src="${product[i].image}" width=50px>
+            <td>   
+                <div id="table_img_container">        
+                    <img src="${product[i].image}" id="table_img">&nbsp
+                </div>    
             </td>                   
             <td>
-                ${product[i].id}
+                ${product[i].id}&nbsp
             </td>
             <td>
-                ${product[i].price}
+                $${product[i].price}&nbsp
             </td>
             <td>
-                <button onclick="removeFromCart('${i}')">Remove</button>
+                <button id="removeFromCartBtn" onclick="removeFromCart('${i}')">Remove</button>
             </td>
         </tr>            
         `
@@ -232,33 +273,39 @@ function displayCart(product) {
     }, 0);
     totalEl.innerHTML = "Cart Total: $ " + sumPrice.toFixed(2); // toFixed(2) round didgit to two decimals
 }
-// const savedProducts = JSON.parse(localStorage.getItem("product"));
-// if (savedProducts) {
-//     cartArray = savedProducts;
-// }
-// displayCart(cartArray);
-
-// const savedProducts = JSON.parse(localStorage.getItem("product"));
-// if (savedProducts) {
-//     cartArray = savedProducts;
-// }
-// displayCart(cartArray);
 const savedProducts = JSON.parse(localStorage.getItem("product"));
-
-cartArray = savedProducts;
-
+if (savedProducts) {
+    cartArray = savedProducts;
+}
 displayCart(cartArray);
 
+// const savedProducts = JSON.parse(localStorage.getItem("product"));
+// if (savedProducts) {
+//     cartArray = savedProducts;
+// }
+// displayCart(cartArray);
+// const savedProducts = JSON.parse(localStorage.getItem("product"));
+
+// cartArray = savedProducts;
+
+// displayCart(cartArray);
 
 
 
 
 
+function clearCart() {
+    localStorage.clear(cartArray)
+
+    document.location.reload();
+}
 
 
 function checkout() {
     window.location = "checkout.html";
 }
+
+
 
 
 

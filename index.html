@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a51a2dca4e.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style_index.css">
     <title>Fakestore Project</title>
 </head>
 <body>
@@ -26,13 +26,15 @@
                         <a href="index.html" class="navbar_links">Home</a>
                     </li>
                     <li class="navbar_item">
+                        <a href="admin.html" class="navbar_links">Admin</a>
+                    </li>
+                    <li class="navbar_item">
                         <a href="checkout.html" class="navbar_links">
                             <i id="cartIcon" class="fa-solid fa-cart-shopping"></i>
+                            <p id="quantityIcon">0</p>
                         </a>
                     </li>
-                    <!-- <li class="navbar_item">
-                        <a href="contact.html" class="navbar_links">Contact</a>
-                    </li> -->
+                    
                     <li class="navbar_button">
                         <button onclick="topFunction()" id="myBtn">To Top</button>
                     </li>
@@ -54,27 +56,41 @@
         <button value="jewelery">Jewelery</button>
         <button value="electronics">Electronics</button>
     </div> -->
-    <label for="category">Sort:</label>
-    <select name="category" id="category">
-        <option value="all">Show all</option>
-        <option value="men's clothing">Men's clothing</option>        
-        <option value="jewelery">Jewelery</option>
-        <option value="electronics">Electronics</option>
-        <option value="women's clothing">Women's clothing</option>
-    </select>
+
+    <div id="category_container">
+        <label for="category" id="category_lebel">Sort:</label>
+        <select name="category" id="category">
+            <option value="all">Show all</option>
+            <option value="men's clothing">Men's clothing</option>        
+            <option value="jewelery">Jewelery</option>
+            <option value="electronics">Electronics</option>
+            <option value="women's clothing">Women's clothing</option>
+        </select>
+    </div>
+
+    <br><br><br><br>
+
+    <!-- <section id="category">
+        <h3>categories</h3>
+        <input type="radio" id="category" name="category" value="all">
+        <label for="all">Show all</label>
+        <input type="radio" id="category" name="category" value="men's clothing">
+        <label for="men">Men's clothing</label>
+        <input type="radio" id="category" name="category" value="women's clothing">
+        <label for="women">Women's clothing</label>
+        <input type="radio" id="category" name="category" value="jewelery">
+        <label for="jewelery">Jewelery</label>
+        <input type="radio" id="category" name="category" value="electronics">
+        <label for="electronics">Electronics</label>
+    </section> -->
+
+
 
     
 
     <!-- <button></button> -->
 
-    <!-- <div id="myBtnContainer">
-        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-        <button class="btn" onclick="filterSelection('mClothing')"> Men's clothing</button>
-        <button class="btn" onclick="filterSelection('wClothing')"> Women's clothing</button>
-        <button class="btn" onclick="filterSelection('jewelery')"> Jewlery</button>
-        <button class="btn" onclick="filterSelection('electronics')"> electronics</button>
-        
-    </div> -->
+    
 
     
 
@@ -86,24 +102,39 @@
 
     <!-- <ul id="list"></ul> -->
 
-    <section id="list"></section>
+    <!-- <section id="list"></section> -->
 
-    <!-- <section id="cart"></section> -->
+    <!-- <section>
+        <ul id="cart">
+            
+        </ul>
+        <hr>
+        <p id="quantity">Quantity:</p>
+        <p id="total">Cart total:</p>
+        <button id= "clearCart" onclick="clearCart()">Clear Cart</button>
+        <button id= "checkoutButton" onclick="checkout()">Checkout</button>
+    </section> -->
     <br><br><br>
 
+    <section id="cart_container">
+        <label for="cart" id="cart_lable">Cart</label>
+        <hr>
+        <table name= "cart" id="cart">
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>id</th>
+                <th>Price</th>
+            </tr>
+        </table>
+        <p id="quantity">Quantity:</p>
+        <p id="total">Cart total:</p>
+        <hr>
+        <button id= "clearCart" onclick="clearCart()">Clear Cart</button>
+        <button id= "checkoutButton" onclick="checkout()">Checkout</button>
+        <hr>
+    </section>
 
-    <label for="cart">Shopping cart</label>
-    <table name= "cart" id="cart">
-        <!-- <tr>
-            <th></th>
-            <th>Product</th>
-            <th>id</th>
-            <th>Price</th>
-        </tr> -->
-    </table>
-    <p id="quantity">Quantity:</p>
-    <p id="total">Cart total:</p>
-    <button id= "checkoutButton" onclick="checkout()">checkout</button>
     <!-- <button id= "checkoutButton" onclick="herf='checkout.html'">checkout</button> -->
     <!-- <a href="ceckout.html"></a> -->
 
@@ -114,6 +145,8 @@
         <th>id</th>
         <th>price</th>
     </table> -->
+
+    
 
 
 
@@ -126,7 +159,7 @@
 
 
 
-    <script src="app.js"></script>
+    <script src="app_index.js"></script>
     
 </body>
 </html>

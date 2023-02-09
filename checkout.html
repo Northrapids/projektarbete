@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="checkout.css"> -->
+    <script src="https://kit.fontawesome.com/a51a2dca4e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style_checkout.css">
     <title>Checkout</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
         <nav class="navbar">
             <nav class="navbar_container">            
                 <a href="/" id="navbar_logo"><i class="fa-solid fa-shop"></i>FAKE STORE</a>
-                <!-- <i id="cart" class="fa-solid fa-cart-shopping"></i> -->
+                <!-- <i id="cartIcon" class="fa-solid fa-cart-shopping"></i> -->
                 <!-- <i class="fa-solid fa-bag-shopping"></i> -->
                 <nav class="navbar_toggle" id="mobile-menu">
                     <nav class="bar"></nav>
@@ -25,10 +26,14 @@
                         <a href="index.html" class="navbar_links">Home</a>
                     </li>
                     <li class="navbar_item">
-                        <a href="checkout.html" class="navbar_links">
-                            <i id="cartIcon" class="fa-solid fa-cart-shopping">                                
-                        </a>
-                    </li>
+                      <a href="admin.html" class="navbar_links">Admin</a>
+                  </li>
+                  <li class="navbar_item">
+                    <a href="checkout.html" class="navbar_links">
+                      <i id="cartIcon" class="fa-solid fa-cart-shopping"></i>
+                      <!-- <p id="quantityIcon">0</p> -->
+                  </a>
+                  </li>
                     <!-- <li class="navbar_item">
                         <a href="contact.html" class="navbar_links">Contact</a>
                     </li> -->
@@ -53,212 +58,252 @@
     <p id="quantity">Quantity:</p>
     <p id="total">Cart total:</p> -->
 
-    <br><br><br><br><br><br><br><br>
+    <br><br>
+
+    <section id="contactform">
 
 
-    <h1>Checkout</h1>
+      <h1>Checkout</h1>
 
-    <section id="checkout">
-      <div class="row">
-        <div class="col-75">
-          <div class="container">
-            <form action="/action_page.php">
+      <section id="checkout">
+        <div class="row">
+          <div class="col-75">
+            <div class="container">
+              <form action="/action_page.php">
 
-              <div class="row">
-                <div class="col-50">
-                  <h3>Billing Address</h3>
-                  <label for="fname"><i class="fa fa-user"></i>First name</label>
-                  <input type="text" id="fname" name="firstname" placeholder="Enter your name..." required>
-                  <label for="sname"><i class="fa fa-user"></i>Surname</label>
-                  <input type="text" id="sname" name="surname" placeholder="Enter your surname..." required>
-                  <label for="email"><i class="fa fa-user"></i>Email</label>
-                  <input type="text" id="email" name="email" placeholder="Enter your email..." required>
-                  <label for="adr"><i class="fa fa-address-card-o"></i>Address</label>
-                  <input type="text" id="adr" name="address" placeholder="Enter your address..." required>
-                  <label for="city"><i class="fa fa-institution"></i>City</label>
-                  <input type="text" id="city" name="city" placeholder="Enter your city..." required>
-                  <label for="zip"><i class=""></i>Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="Enter your zip code..." required>
-                  <label for="phone"><i class=""></i> Phone</label>
-                  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter your phonenumber..." required>
+                <div class="row">
+                  <div class="col-50">
+                    <!-- <h3>Billing Address</h3> -->
+                    <!-- <label for="fname"><i class="fa fa-user"></i>First name</label>
+                    <input type="text" id="fname" name="fname" placeholder="Enter your name..." required>
+                    <label for="sname"><i class="fa fa-user"></i>Surname</label>
+                    <input type="text" id="sname" name="surname" placeholder="Enter your surname..." required> -->
+                    <label for="name">Name</label>
+                    <br>
+                    <input type="text" id="name" name="name" placeholder="Enter your name..." required>
+                    <br>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" id="email" name="email" placeholder="Enter your email..." required>
+                    <br>
+                    <label for="adr">Address</label>
+                    <br>
+                    <input type="text" id="address" name="address" placeholder="Enter your address..." required>
+                    <br>
+                    <label for="city">City</label>
+                    <br>
+                    <input type="text" id="city" name="city" placeholder="Enter your city..." required>
+                    <br>
+                    <label for="zip">Zip</label>
+                    <br>
+                    <input type="text" id="zip" name="zip" placeholder="Enter your zip code..." required>
+                    <br>
+                    <!-- <label for="phone"><i class=""></i> Phone</label>
+                    <br>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="Enter your phonenumber..." required> -->
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
+<br>
+          <div class="col-50">
 
-        <div class="col-50">
+            
+            <!-- <form action="">
+              <h3>Payment</h3>
+              <p>Select payment method:</p>
+              <br>
+              <input type="radio" id="payment" name="visa" value="visa">
+              <label for="visa">Visa</label>
+              <br>            
+              <input type="radio" id="payment" name="mastercard" value="mastercard">
+              <label for="mastercard">Mastercard</label>  
+              <br>          
+              <input type="radio" id="payment" name="swish" value="swish">
+              <label for="swish">Swish</label>
 
-          
-          <form action="">
+              <br><br>
+
+              <h3>Shipping</h3>
+              <p>Select shipping method:</p>
+              <br>
+              <input type="radio" id="home" name="shipping" value="home">
+              <label for="home">Home delivery</label>
+              <br>
+              <input type="radio" id="pickup" name="shipping" value="pickup">
+              <label for="pickup">Warehouse pickup</label>
+              <br>
+              <input type="radio" id="locker" name="shipping" value="locker">
+              <label for="locker">Parcel locker</label>
+              
+              
+            </form> -->
+
+            <br>
+
+
             <h3>Payment</h3>
-            <p>Select payment method</p>
-            <input type="radio" id="visa" name="payment" value="visa">
-            <label for="visa">Visa</label>            
-            <input type="radio" id="mastecard" name="payment" value="mastercard">
-            <label for="mastercard">Mastercard</label>            
-            <input type="radio" id="swish" name="payment" value="swish">
-            <label for="swish">Swish</label>
+            <label for="payment">Accepted payment methods</label>       
+
+              <select name="paymentMethod" id="payment" required>
+                <option value="" disabled selected>payment options...</option>
+                <option value="visa">Visa</option>
+                <option value="mastercard">Mastercard</option>
+                <option value="swish">Swish</option>
+              </select>
 
             <h3>Shipping</h3>
-            <p>Select shipping method</p>
-            <input type="radio" id="home" name="shipping" value="home">
-            <label for="home">Home delivery</label>
-            <input type="radio" id="pickup" name="shipping" value="pickup">
-            <label for="pickup">Warehouse pickup</label>
-            <input type="radio" id="locker" name="shipping" value="locker">
-            <label for="locker">Parcel locker</label>
-            
-            
-          </form>
-
-
-          <h3>Payment</h3>
-          <label for="payment">Accepted payment methods</label>       
-
-            <select name="paymentMethod" id="paymentMethod" required>
-              <option value="" disabled selected>payment options...</option>
-              <option value="visa">Visa</option>
-              <option value="mastercard">Mastercard</option>
-              <option value="swish">Swish</option>
+            <label for="shipping">Available Shipping methods</label>
+            <select name="shippingMethod" id="shipping" required>
+              <option value="" disabled selected>Shipping options...</option>
+              <option value="home delivery">Home delivery</option>
+              <option value="Warehouse pickup">Warehouse pickup</option>
+              <option value="parcel locker">Parcel locker</option>            
             </select>
+          </div>
 
-          <h3>Shipping</h3>
-          <label for="shipping">Available Shipping methods</label>
-          <select name="shippingMethod" id="shippingMethod" required>
-            <option value="" disabled selected>Shipping options...</option>
-            <option value="home">Home delivery</option>
-            <option value="pickup">Warehouse pickup</option>
-            <option value="locker">Parcel locker</option>            
-          </select>
-        </div>
+          
 
+          <div class="col-25">
+            <div class="container">
+              <h3>Cart</h3>
+              <!-- <h4>Cart
+                <span class="price" style="color:black">
+                  <i class="fa fa-shopping-cart"></i>                
+                </span>
+              </h4> -->
+              <!-- <label for="cart">Shopping cart</label> -->
+              <table name= "cart" id="cart">
+                <!-- <tr>
+                  <th></th>
+                  <th>Product</th>
+                  <th>id</th>
+                  <th>Price</th>
+                </tr> -->
+              </table>
+              <hr>
+              <p id="quantity">Quantity:</p>
+              <p id="total">Cart total:</p>
+              <hr>
+              <!-- <h2 id="text" class="thank_you">Thank You For Your Order!</h2> -->
+              <button id= "clearCart" onclick="clearCart()">Clear Cart</button>
+              <input type="submit" value="Place Order" class="btn" onclick="placeOrder()">
+
+              <!-- <div class="button">
+                Send button with thank you message when pressed
+                <h2 id="text" class="thank_you">Thank You For Your Order!</h2>
+                <button class="sendbtn" id="messagetext" type="submit" value="submit">SEND</button> 
+            </div> -->
+
+              <!-- <hr>
+              <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
+            </div>
+          </div>
+          <div id="message"></div>
+          
         
+      </section>
 
-        <div class="col-25">
-          <div class="container">
-            <h3>Cart</h3>
-            <!-- <h4>Cart
-              <span class="price" style="color:black">
-                <i class="fa fa-shopping-cart"></i>                
-              </span>
-            </h4> -->
-            <!-- <label for="cart">Shopping cart</label> -->
-            <table name= "cart" id="cart">
-              <!-- <tr>
-                <th></th>
-                <th>Product</th>
-                <th>id</th>
-                <th>Price</th>
-              </tr> -->
-            </table>
-            <hr>
-            <p id="quantity">Quantity:</p>
-            <p id="total">Cart total:</p>
-            <input type="submit" value="Place Order" class="btn">
-
-            <!-- <hr>
-            <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
+      <!-- <div class="row">
+          <div class="col-75">
+            <div class="container">
+              <form action="/action_page.php">
+        
+                <div class="row">
+                  <div class="col-50">
+                    <h3>Billing Address</h3>
+                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Enter your name...">
+                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="text" id="email" name="email" placeholder="Enter your email...">
+                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                    <input type="text" id="adr" name="address" placeholder="Enter your address..">
+                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                    <input type="text" id="city" name="city" placeholder="Enter your city...">
+                    <label for="phone"><i class=""></i> Phone</label>
+                    <input type="number" id="phone" name="phone" placeholder="Enter your phonenumber...">
+        
+                    <div class="row">
+                      <div class="col-50">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="NY">
+                      </div>
+                      <div class="col-50">
+                        <label for="zip">Zip</label>
+                        <input type="text" id="zip" name="zip" placeholder="10001">
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="col-50">
+                    <h3>Payment</h3>
+                    <label for="fname">Accepted Cards</label>
+                    <div class="icon-container">
+                      <i class="fa fa-cc-visa" style="color:navy;"></i>
+                      <i class="fa fa-cc-amex" style="color:blue;"></i>
+                      <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                      <i class="fa fa-cc-discover" style="color:orange;"></i>
+                    </div>
+                    <label for="cname">Name on Card</label>
+                    <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                    <label for="ccnum">Credit card number</label>
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                    <label for="expmonth">Exp Month</label>
+                    <input type="text" id="expmonth" name="expmonth" placeholder="September">
+        
+                    <div class="row">
+                      <div class="col-50">
+                        <label for="expyear">Exp Year</label>
+                        <input type="text" id="expyear" name="expyear" placeholder="2018">
+                      </div>
+                      <div class="col-50">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="352">
+                      </div>
+                    </div>
+                  </div>
+        
+                </div>
+                <label>
+                  <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                </label>
+                <input type="submit" value="Continue to checkout" class="btn">
+              </form>
+            </div>
           </div>
-        </div>      
+        
+          <div class="col-25">
+            <div class="container">
+              <h4>Cart
+                <span class="price" style="color:black">
+                  <i class="fa fa-shopping-cart"></i>
+                  <b>4</b>
+                </span>
+              </h4>
+              <label for="cart">Shopping cart</label>
+      <table name= "cart" id="cart">
+          <tr>
+              <th></th>
+              <th>Product</th>
+              <th>id</th>
+              <th>Price</th>
+          </tr>
+      </table>
+      <hr>
+      <p id="quantity">Quantity:</p>
+      <p id="total">Cart total:</p>
+              <hr>
+              <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            </div>
+          </div>
+        </div>  -->
+
     </section>
-
-    <!-- <div class="row">
-        <div class="col-75">
-          <div class="container">
-            <form action="/action_page.php">
-      
-              <div class="row">
-                <div class="col-50">
-                  <h3>Billing Address</h3>
-                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                  <input type="text" id="fname" name="firstname" placeholder="Enter your name...">
-                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                  <input type="text" id="email" name="email" placeholder="Enter your email...">
-                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                  <input type="text" id="adr" name="address" placeholder="Enter your address..">
-                  <label for="city"><i class="fa fa-institution"></i> City</label>
-                  <input type="text" id="city" name="city" placeholder="Enter your city...">
-                  <label for="phone"><i class=""></i> Phone</label>
-                  <input type="number" id="phone" name="phone" placeholder="Enter your phonenumber...">
-      
-                  <div class="row">
-                    <div class="col-50">
-                      <label for="state">State</label>
-                      <input type="text" id="state" name="state" placeholder="NY">
-                    </div>
-                    <div class="col-50">
-                      <label for="zip">Zip</label>
-                      <input type="text" id="zip" name="zip" placeholder="10001">
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="col-50">
-                  <h3>Payment</h3>
-                  <label for="fname">Accepted Cards</label>
-                  <div class="icon-container">
-                    <i class="fa fa-cc-visa" style="color:navy;"></i>
-                    <i class="fa fa-cc-amex" style="color:blue;"></i>
-                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                    <i class="fa fa-cc-discover" style="color:orange;"></i>
-                  </div>
-                  <label for="cname">Name on Card</label>
-                  <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                  <label for="ccnum">Credit card number</label>
-                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                  <label for="expmonth">Exp Month</label>
-                  <input type="text" id="expmonth" name="expmonth" placeholder="September">
-      
-                  <div class="row">
-                    <div class="col-50">
-                      <label for="expyear">Exp Year</label>
-                      <input type="text" id="expyear" name="expyear" placeholder="2018">
-                    </div>
-                    <div class="col-50">
-                      <label for="cvv">CVV</label>
-                      <input type="text" id="cvv" name="cvv" placeholder="352">
-                    </div>
-                  </div>
-                </div>
-      
-              </div>
-              <label>
-                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-              </label>
-              <input type="submit" value="Continue to checkout" class="btn">
-            </form>
-          </div>
-        </div>
-      
-        <div class="col-25">
-          <div class="container">
-            <h4>Cart
-              <span class="price" style="color:black">
-                <i class="fa fa-shopping-cart"></i>
-                <b>4</b>
-              </span>
-            </h4>
-            <label for="cart">Shopping cart</label>
-    <table name= "cart" id="cart">
-        <tr>
-            <th></th>
-            <th>Product</th>
-            <th>id</th>
-            <th>Price</th>
-        </tr>
-    </table>
-    <hr>
-    <p id="quantity">Quantity:</p>
-    <p id="total">Cart total:</p>
-            <hr>
-            <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-          </div>
-        </div>
-      </div>  -->
+    <br><br><br>
 
       <!-- <script src="app.js" type="module"></script> -->
-      <script src="checkout.js"></script>
+      <script src="app_checkout.js"></script>
     
 </body>
 </html>

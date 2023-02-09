@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+:root {
+    --background2: #23A89E;
+    --background: #e3e6e2; 
+    --accent: #918e8e;
+    --accent2: #d9d9d9;
+    --font1: 'Oswald', sans-serif;
+    --font2: 'Lato', sans-serif;
+    /* box-sizing: border-box;  */
+}
+
+body {
+    background-color: var(--background);
+    /* margin-left: 10vh;
+    margin-right: 10vh; */
+}
+
+/* to top button changes color when cursor hovers */
+#addToCartBtn:hover{    
+    /* color: var(--background); */
+    /* background-color: var(--accent); */
+    background-color: #4CAF50; /* Green */
+    color: white;
+} 
+
+#cart {
+    font-family: Arial, Helvetica, sans-serif;
+    /* border-collapse: collapse; */
+    /* width: 100%; */
+    /* color: red; */
+    /* background-color: red; */
+    /* margin-left: 10vh;
+    margin-right: 10vh; */
+}
+
+#cart td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    
+}
+
+#cart tr:nth-child(even){background-color: #f2f2f2;}
+
+#cart tr:hover {background-color: #ddd;}
+
+#checkout {
+  margin-left: 10vh;
+  margin-right: 10vh;
+}
+h1 {
+  margin-left: 10vh;
+  margin-right: 10vh;
+  margin-bottom: 3vh;
+}
+h3 {
+  /* margin-left: 10vh; */
+  /* margin-right: 10vh; */
+  margin-bottom: 1vh;
+}
+
+/* table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+} */
+
+/* h1 {
+    text-align: center;
+    color: var(--accent);
+    font-size: 2.5rem;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+} */
+
+/* img {
+    width: 300px;
+    width: 100%;
+    height: auto;
+    object-fit: scale-down;
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+} */
+
+/* body {
+    color: black;
+    background-color: bisque;
+} */
+
+/* nav fron html css project */
+
+.navbar {
+    background: var(--accent2);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar_container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+#navbar_logo {
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: var(--font1);
+    font-size: 2rem;
+}
+
+.fa-shop {
+    margin-right: 0.5rem;
+}
+
+/* #cart { */
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    /* font-family: var(--font1); */
+    font-size: 2rem;
+}
+
+
+.fa-cart-shopping {
+    margin-right: 0.5rem;
+}
+
+.navbar_menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+/* home rooms contacts */
+/* .navbar_item {
+    height: 80px; 
+    font-family: var(--font2);   
+} */
+.navbar_item {
+    /* height: 80px;  */
+    font-family: var(--font2);   
+    /* border: 1px solid #ffffff20;
+    border-radius: .1rem; */
+    /* width: 3.3rem;
+    height: 3.3rem; */
+    /* margin-right: 1rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* #quantityIcon {
+    height: 22px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background-color: #ff7e00;
+    color: white;
+} */
+#quantityIcon {
+    /* user-select: none; */
+    position:absolute;
+    right: 10px;
+    /* background-color: #ff4754; */
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 1rem;
+    /* border-radius: 50%; */
+    font-weight: bold;
+    /* display:flex: */
+    justify-content: center;
+    top: -1.2rem;
+    /* right: .3rem; */
+}
+
+/* knapparnas utseende */
+.navbar_links {
+    color: var(--accent);
+    /* background-color: var(--background); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+/* to top button position */
+.navbar_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+/* to top button design */
+#myBtn {
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border-color: var(--accent);
+    border-style: solid;
+    outline: none;
+    border-radius: 10px;
+    background: var(--background);
+    color: var(--accent);  
+    font-family: var(--font2); 
+    cursor: pointer;    
+}
+
+/* to top button changes color when cursor hovers */
+#myBtn:hover{    
+    color: var(--background);
+    background-color: var(--accent);
+} 
+
+/* menubar items changes color when cursor hovers */
+.navbar_links:hover {    
+    /* background: var(--accent); */
+    /* color: var(--background); */
+    transition: all 0.3s ease;   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .row {
+    display: -ms-flexbox; IE10
+    display: flex;
+    -ms-flex-wrap: wrap; IE10
+    flex-wrap: wrap;
+    margin: 0 -16px;
+  }
+  
+  .col-25 {
+    -ms-flex: 25%; IE10
+    flex: 25%;
+  }
+  
+  .col-50 {
+    -ms-flex: 50%; IE10
+    flex: 50%;
+  }
+  
+  .col-75 {
+    -ms-flex: 75%; IE10
+    flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+  
+  .container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  
+  input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    padding-right: 0px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  input[type=tel] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: center;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+  
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  span.price {
+    float: right;
+    color: grey;
+  }
+
+  message button
+
+.sendbtn {
+  width: 20%;
+  padding: 10px;
+  font-size: 20px;
+  color: var(--background);
+  background-color:var(--accent);
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.thank_you {
+  display: none;
+  color: var(--accent);
+  font-family: var(--font2);
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 10px;  
+}
+  
+  Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top)
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  } */
