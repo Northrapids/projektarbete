@@ -1,8 +1,6 @@
 "use strict";
 
-// $.getScript(app.js);
-
-
+// HTML - element
 const listEl = document.getElementById("list");
 const cartEl = document.getElementById("cart");
 const totalEl = document.getElementById("total");
@@ -13,20 +11,14 @@ const emailEl = document.getElementById("email");
 const addressEl = document.getElementById("address");
 const cityEl = document.getElementById("city");
 const zipEl = document.getElementById("zip");
-// const phoneEl = document.getElementById("phone");
 const paymentEl = document.getElementById("payment");
 const shippingEl = document.getElementById("shipping");
 
 const messageEl = document.getElementById("message");
 
 
-
-// måste skriva const för namn, email, address osv...........
-
-// let cartArray= [];
 let cartArray = JSON.parse(localStorage.getItem("product")) || [];
-// let cartArray = [];
-// console.log("hej");
+
 
 // function that removes products from cart
 function removeFromCart(i) {
@@ -43,88 +35,67 @@ function removeFromCart(i) {
 function displayCart(product) {
     console.log("displayCart function working"); // checks in console if function is working
 
-    // console.log(Object.keys(localStortage));
 
-    if (cartArray.lenght === 0) {
-        console.log("empty");
-        cartEl.innerHTML = `
-        <td>
-            <p>Cart is empty!</p>
-        </td>
-        `
+    document.getElementById("quantityIcon").innerHTML = cartArray.length;
+
+    // if case for quantity icon, dosen't show zero when cart is empty
+    if (cartArray.length >= 1) {    
+    document.getElementById("quantityIcon").style.display = "flex"
     } else {
+        document.getElementById("quantityIcon").style.display = "none";
+    }
     
-        cartEl.innerHTML = "";
-        // cartEl.innerHTML = 
-        // `
-        // <tr>    
-        //     <th>Product</th>
-        //     <th>id</th>
-        //     <th>Price</th>
-        // </tr>
-        // `;
+    cartEl.innerHTML = "";
+    cartEl.innerHTML = 
+        `
+        <tr>    
+            <th>Product</th>
+            <th>id</th>
+            <th>Price</th>
+            <th>Remove</th>
+        </tr>
+        `;
         
-        for(let i = 0; i < product.length; i++) {
-            cartEl.innerHTML += 
+    for(let i = 0; i < product.length; i++) {
+        cartEl.innerHTML += 
             `
             <tr>      
-                <td>            
-                    <img src="${product[i].image}" width=50px>
+                <td>   
+                    <div id="table_img_container">        
+                        <img src="${product[i].image}" id="table_img">&nbsp
+                    </div>    
                 </td>                   
                 <td>
                     ${product[i].id}
                 </td>
                 <td>
-                    ${product[i].price}
+                    $${product[i].price}
                 </td>
                 <td>
-                    <button onclick="removeFromCart('${i}')">Remove</button>
+                    <button id="removeFromCartBtn" onclick="removeFromCart('${i}')">Remove</button>
                 </td>
             </tr>            
             `
-        }
-
-        quantityEl.innerHTML = "Quantity: " + product.length; // summarize products in cart
-
-        const sumPrice = product.reduce((acc, product) => { // summarize prices
-            return acc + parseFloat(product.price);        
-        }, 0);
-        totalEl.innerHTML = "Cart Total: $ " + sumPrice.toFixed(2); // toFixed(2) round didgit to two decimals
     }
+
+    quantityEl.innerHTML = "Quantity: " + product.length; // summarize products in cart
+
+    const sumPrice = product.reduce((acc, product) => { // summarize prices
+        return acc + parseFloat(product.price);        
+    }, 0);
+    totalEl.innerHTML = "Cart Total: $ " + sumPrice.toFixed(2); // toFixed(2) round didgit to two decimals
+
 }
 
+
+// checks if ther is products saved in local storage otherwise displays empty array
 const savedProducts = JSON.parse(localStorage.getItem("product"));
 if (savedProducts) {
     cartArray = savedProducts;
 }
 displayCart(cartArray);
 
-// const savedProducts = JSON.parse(localStorage.getItem("product"));
 
-// if (savedProducts.lenght === 0) {
-//     cartArray = savedProducts;
-//     displayCart(cartArray);
-// } else {
-//     console.log("empty");
-//     cartEl.innerHTML = `
-//     <td>
-//         <p>Cart is empty!</p>
-//     </td>
-//     `
-// }
-
-// if (savedProducts.lenght === 0) {
-//     console.log("empty");
-//     cartEl.innerHTML = `
-//     <td>
-//         <p>Cart is empty!</p>
-//     </td>
-//     `
-// } else {
-    
-//     cartArray = savedProducts;
-//     displayCart(cartArray);
-// }
 
 function clearCart() {
     localStorage.clear(cartArray)
@@ -132,10 +103,8 @@ function clearCart() {
     document.location.reload();
 }
 
-
+// function posts order to firebase
 function placeOrder() {
-    // const fname = fnameEl.value.trim();
-    // const sname = snameEl.value.trim();
     const name = nameEl.value.trim();
     const email = emailEl.value.trim();
     const address = addressEl.value.trim();
@@ -145,14 +114,13 @@ function placeOrder() {
     const shipping = shippingEl.value.trim();
 
 
-
-    // if(!fname || !sname || !email || !address || !city || !zip || !payment || !shipping) {
+    // all fields must be filled out or order can't be placed and message appears asking user to do so
     if(!name || !email || !address || !city || !zip || !payment || !shipping) {
 
         console.log("place order error");
 
         messageEl.innerHTML = `
-        <h3>Please fill out all fields to proceed!</h3>        
+        <h3 style="color: red">Please fill out all fields to proceed!</h3>        
         `;
 
         
@@ -162,9 +130,6 @@ function placeOrder() {
     const productId = cartArray.map(product => {
         return {"stringValue": product.id}
     });
-    // const productId = cartArray.map(product => {
-    //     return {"stringValue": product.title, "stringValue": product.id}
-    // });
 
     const data = {
         "fields": {            
@@ -210,48 +175,22 @@ function placeOrder() {
     })
     .then(res => res.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
-
-    // const contactformEl = document.querySelector("#contactform");
-
-    // contactformEl.innerHTML = `
-    // <h1>Thank You For Your order!</h1>
-    // `;
+    .catch(error => console.log(error))    
 
     messageEl.innerHTML = `
-        <h3>Thank You For Your order!</h3>        
+        <h3 style="color: orange">Thank You For Your order!</h3>        
         `;
 
-    localStorage.clear(cartArray);
+    localStorage.clear(cartArray); //clears array after order is placed
 
+    // directs user to index page after order is placed
     setTimeout(() => {
         window.location = "index.html";
-    },3000)
-
-
-//     // thank you message apperas when send button is pressed
-// const buttonEl = document.querySelector('.button');
-// const contactformEl = document.querySelector(".contactform");
-
-// function messagetext(e) {
-//     e.preventDefault();
-//     document.body.style.fontSize = '4rem'
-//     document.body.style.fontFamily = 'Lato'
-
-//     contactformEl.innerHTML = "Thank You For Your Message!";
-// }
-
+    },500)
 }
 
-
-
-
-
-
-// buttonEl.addEventListener('click', messagetext);
-
-
-
-
-
-
+// scroll to top function when to top button is pressed
+function topFunction() {
+    document.body.scrollTop = 0; // Safari
+    document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+}

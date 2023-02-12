@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* border: 1px solid red; */
-}
+
+
 :root {
     --background2: #23A89E;
     --background: #e3e6e2; 
@@ -13,96 +9,23 @@
     --accent2: #d9d9d9;
     --font1: 'Oswald', sans-serif;
     --font2: 'Lato', sans-serif;
-    /* box-sizing: border-box;  */
+    box-sizing: border-box; 
 }
 
 body {
     background-color: var(--background);
-    /* margin-left: 10vh;
-    margin-right: 10vh; */
+    margin-left: 10vh;
+    margin-right: 10vh;
 }
 
-/* to top button changes color when cursor hovers */
-#addToCartBtn:hover{    
-    /* color: var(--background); */
-    /* background-color: var(--accent); */
-    background-color: #4CAF50; /* Green */
-    color: white;
-} 
+/* nav---------------------------------------------------------- */
 
-#cart {
-    font-family: Arial, Helvetica, sans-serif;
-    /* border-collapse: collapse; */
-    /* width: 100%; */
-    /* color: red; */
-    /* background-color: red; */
-    /* margin-left: 10vh;
-    margin-right: 10vh; */
-}
 
-#cart td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    
-}
-
-#cart tr:nth-child(even){background-color: #f2f2f2;}
-
-#cart tr:hover {background-color: #ddd;}
-
-#checkout {
-  margin-left: 10vh;
-  margin-right: 10vh;
-}
-h1 {
-  margin-left: 10vh;
-  margin-right: 10vh;
-  margin-bottom: 3vh;
-}
-h3 {
-  /* margin-left: 10vh; */
-  /* margin-right: 10vh; */
-  margin-bottom: 1vh;
-}
-
-/* table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #04AA6D;
-    color: white;
-} */
-
-/* h1 {
-    text-align: center;
-    color: var(--accent);
-    font-size: 2.5rem;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-} */
-
-/* img {
-    width: 300px;
-    width: 100%;
-    height: auto;
-    object-fit: scale-down;
-    float: left;
-    width:  100px;
-    height: 100px;
-    object-fit: cover;
-} */
-
-/* body {
-    color: black;
-    background-color: bisque;
-} */
-
-/* nav fron html css project */
 
 .navbar {
     background: var(--accent2);
-    height: 80px;
-    display: flex;
+    height: 100%;
+    display: block;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
@@ -135,13 +58,11 @@ h3 {
     margin-right: 0.5rem;
 }
 
-/* #cart { */
+#cartIcon {
     color: var(--accent);
     display: flex;
     align-items: center;
-    text-decoration: none;
-    /* font-family: var(--font1); */
-    font-size: 2rem;
+    text-decoration: none;    
 }
 
 
@@ -156,80 +77,47 @@ h3 {
     text-align: center;
 }
 
-/* home rooms contacts */
-/* .navbar_item {
-    height: 80px; 
-    font-family: var(--font2);   
-} */
 .navbar_item {
-    /* height: 80px;  */
-    font-family: var(--font2);   
-    /* border: 1px solid #ffffff20;
-    border-radius: .1rem; */
-    /* width: 3.3rem;
-    height: 3.3rem; */
-    /* margin-right: 1rem; */
+    height: 80px; 
+    font-family: var(--font2);       
+    width: 3.3rem;
+    height: 3.3rem;
+    margin-right: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
-/* #quantityIcon {
-    height: 22px;
-    width: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 22px;
-    background-color: #ff7e00;
-    color: white;
-} */
-#quantityIcon {
-    /* user-select: none; */
-    position:absolute;
-    right: 10px;
-    /* background-color: #ff4754; */
-    width: 1.3rem;
-    height: 1.3rem;
+#quantityIcon {    
+    position:absolute;  
     font-size: 1rem;
-    /* border-radius: 50%; */
     font-weight: bold;
-    /* display:flex: */
-    justify-content: center;
-    top: -1.2rem;
-    /* right: .3rem; */
+    top: -1rem;
+    right: .8rem;
 }
 
 /* knapparnas utseende */
 .navbar_links {
     color: var(--accent);
-    /* background-color: var(--background); */
+    background-color: var(--accent2);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;    
     text-decoration: none;
-    padding: 0 1rem;
-    height: 100%;
+    padding: 0 1rem;    
 }
 
 /* to top button position */
 .navbar_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 0 1rem;
-    width: 100%;
+    
 }
 
 /* to top button design */
 #myBtn {
-    padding: 10px 20px;
-    height: 100%;
-    width: 100%;
+    padding: 10px 20px;   
     border-color: var(--accent);
     border-style: solid;
-    outline: none;
     border-radius: 10px;
     background: var(--background);
     color: var(--accent);  
@@ -243,150 +131,172 @@ h3 {
     background-color: var(--accent);
 } 
 
-/* menubar items changes color when cursor hovers */
-.navbar_links:hover {    
-    /* background: var(--accent); */
-    /* color: var(--background); */
-    transition: all 0.3s ease;   
+/* nav---------------------------------------------------------- */
+
+/* Checout------------------------------------------------------ */
+
+h1 {
+  text-align: center;
+  color: var(--accent);
+  font-size: 3.5rem;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .row {
-    display: -ms-flexbox; IE10
-    display: flex;
-    -ms-flex-wrap: wrap; IE10
-    flex-wrap: wrap;
-    margin: 0 -16px;
-  }
+#checkout{
+  justify-content: center;
+  display: flex;
   
-  .col-25 {
-    -ms-flex: 25%; IE10
-    flex: 25%;
-  }
-  
-  .col-50 {
-    -ms-flex: 50%; IE10
-    flex: 50%;
-  }
-  
-  .col-75 {
-    -ms-flex: 75%; IE10
-    flex: 75%;
-  }
-  
-  .col-25,
-  .col-50,
-  .col-75 {
-    padding: 0 16px;
-  }
-  
-  .container {
-    background-color: #f2f2f2;
-    padding: 5px 20px 15px 20px;
-    border: 1px solid lightgrey;
-    border-radius: 3px;
-  }
-  
-  input[type=text] {
+}
+
+#container {
+  justify-content: center;
+  align-items: center;  
+  background: #fff;
+  box-shadow: 3px 3px 5px #000;
+  padding: 5px 20px 15px 20px;  
+  border-radius: 10px;
+  width: 30%;  
+  padding: 5vh;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: var(--font1);
+  color: var(--accent);
+}
+
+input {  
     width: 100%;
     margin-bottom: 20px;
     padding: 12px;
     padding-right: 0px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--accent);
     border-radius: 3px;
-  }
-  input[type=tel] {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  label {
-    margin-bottom: 10px;
-    display: center;
-  }
-  
-  .icon-container {
-    margin-bottom: 20px;
-    padding: 7px 0;
-    font-size: 24px;
-  }
-  
-  .btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    width: 100%;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 17px;
-  }
-  
-  .btn:hover {
-    background-color: #45a049;
-  }
-  
-  span.price {
-    float: right;
-    color: grey;
-  }
-
-  message button
-
-.sendbtn {
-  width: 20%;
-  padding: 10px;
-  font-size: 20px;
-  color: var(--background);
-  background-color:var(--accent);
-  text-align: center;
-  border: none;
-  outline: none;
-  border-radius: 40px;
-  cursor: pointer;
-  margin-bottom: 20px;
 }
-.thank_you {
-  display: none;
+
+
+
+select{
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content:center;
+
+}
+
+
+
+
+/* Checout------------------------------------------------------ */
+
+/* Cart--------------------------------------------------------- */
+
+
+
+#cart_lable {
   color: var(--accent);
-  font-family: var(--font2);
-  text-align: center;
+  font-family: var(--font1);
   font-size: 2rem;
-  margin-top: 10px;  
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
 }
+
+#cart {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cart th, #cart td {
+  border: 1px solid var(--accent);
+  padding: 8px;
+
+}
+
+#table_img_container {
+  background-color: #fff;
+  box-shadow: 5px 5px 7px rgba(0,0,0,0.3);
+  border: 5px solid #fff;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+  overflow: hidden;
+
+}
+
+#table_img {
+  width: 100%;
+  flex-wrap: wrap;
+  object-fit: scale-down;    
+}
+
+#removeFromCartBtn {
   
-  Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top)
-  @media (max-width: 800px) {
-    .row {
-      flex-direction: column-reverse;
-    }
-    .col-25 {
-      margin-bottom: 20px;
-    }
-  } */
+  color: var(--background2);
+  background-color: var(--accent);    
+  border-radius: 5px;
+  color: white;
+  
+}
+
+#removeFromCartBtn:hover {
+  color: var(--background2);
+  background-color: var(--accent);
+  background-color: #ff0000;
+  color: white;
+}
+
+#quantity {
+  text-align: center;
+  color: var(--accent);    
+  font-family:var(--font1);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+#total {
+  text-align: center;
+  color: var(--accent);    
+  font-family:var(--font1);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+#clearCart {
+  color: var(--background2);
+  background-color: var(--accent);    
+  border-radius: 5px;
+  color: white;
+}
+
+#clearCart:hover {
+  color: var(--background2);
+  background-color: var(--accent);
+  background-color: #ff0000;
+  color: white;
+}
+
+#placeOrder {
+  color: var(--background2);
+  background-color: var(--accent);    
+  border-radius: 5px;
+  color: white;
+}
+
+#placeOrder:hover:hover {
+  color: var(--background2);
+  background-color: var(--accent);
+  background-color: #4CAF50;
+  color: white;
+}
+
+#message {
+  text-align: center;  
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* Cart------------------------------------ */
